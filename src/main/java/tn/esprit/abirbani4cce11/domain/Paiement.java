@@ -21,6 +21,8 @@ public class Paiement {
     private LocalDate datePaiement;
     @Enumerated(EnumType.STRING)
     private  ModePaiement modePaiement;
+    @ManyToOne(optional = false)
+    private Contrat contrat;
 }
 
 

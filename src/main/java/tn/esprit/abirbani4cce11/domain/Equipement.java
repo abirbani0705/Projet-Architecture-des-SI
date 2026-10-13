@@ -1,13 +1,14 @@
 package tn.esprit.abirbani4cce11.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-    @Getter
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
@@ -20,5 +21,7 @@ import java.time.LocalDate;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long idEquipement;
         private String libelle;
+        @ManyToMany(mappedBy = "equipements")
+        Set<Vehicule> vehicules = new HashSet<>();
 
 }

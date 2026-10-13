@@ -1,13 +1,12 @@
 package tn.esprit.abirbani4cce11.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,6 +22,15 @@ public class Contrat {
     private LocalDate dateSignature;
     private BigDecimal montantTotal;
     private boolean valide;
+
+
+    @OneToOne
+    private Reservation reservation;
+
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Paiement> paiements = new HashSet<>();
+
+
 }
 
 

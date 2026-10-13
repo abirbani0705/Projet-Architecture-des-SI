@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,8 +25,15 @@ public class Vehicule {
     private String marque;
     private String modele;
     @Enumerated(EnumType.STRING)
-    private CategorieVehicule categgorie;
+    private CategorieVehicule categorie;
     private BigDecimal tarifJournalier;
+    @Enumerated(EnumType.STRING)
     private StatutVehicule statut;
+    @ManyToMany
+    private Set<Equipement> equipements = new HashSet<>();
+    @ManyToOne
+    private Agence agences;
+    @OneToMany(mappedBy = "vehicule")
+    private Set<Reservation> reservations = new HashSet<>();
 
 }

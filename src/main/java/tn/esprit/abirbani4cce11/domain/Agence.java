@@ -1,10 +1,11 @@
 package tn.esprit.abirbani4cce11.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,6 +22,9 @@ public class Agence {
     private String ville;
     private String adresse;
     private String telephone;
-
+    @OneToMany(mappedBy="agences")
+    private Set<Vehicule> vehicules = new HashSet<>();
+    @OneToMany(mappedBy="agences")
+    private Set<Employe> employes = new HashSet<>();
 
 }

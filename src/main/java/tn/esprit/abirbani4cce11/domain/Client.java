@@ -1,15 +1,14 @@
 package tn.esprit.abirbani4cce11.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
-    @Getter
+@Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
@@ -27,5 +26,7 @@ import java.time.LocalDate;
         private String email;
         private String telephone;
         private String numPermis;
+        @OneToMany(mappedBy = "client")
+        private Set<Reservation> reservations = new HashSet<>();
 
 }
